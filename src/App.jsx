@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="Container">
+        <h1>ColoresApp</h1>
+        <div className="InputHexa">
+          <div className="InputTitle">
+            <h2>Agregar Color</h2>
+            <p>HEX</p>
+          </div>
+          <div className="InputSearch">
+            <div className="InputGroup">
+              <input type="color" className="colorPicker" />
+              <input
+                type="text"
+                className="textInput"
+                placeholder="Codigo Hexadecimal"
+                maxLength="7"
+                pattern="^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+                title="El código hexadecimal debe comenzar con '#' y contener 3 o 6 dígitos hexadecimales."
+                required
+              />
+            </div>
+            <button className="InputButton">Agregar Color</button>
+          </div>
+        </div>
+        <h2>Paleta de Colores</h2>
+        <div className="Color"></div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
