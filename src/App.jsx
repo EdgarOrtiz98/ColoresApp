@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import "./styles/ColorCard.css";
 
 function App() {
   return (
@@ -27,8 +28,27 @@ function App() {
             <button className="InputButton">Agregar Color</button>
           </div>
         </div>
-        <h2>Paleta de Colores</h2>
-        <div className="Color"></div>
+        <div className="InputTitle">
+          <h2>Paleta de Colores</h2>
+          <p className="exportPalette">Exportar</p>
+        </div>
+        <div className="Colors">
+          <div className="ColorCard">
+            <div className="ColorCardTitle">
+              <div
+                className="ColorCardPreview"
+                style={{ backgroundColor: "#FF5733" }}
+              ></div>
+              <h3>50</h3>
+            </div>
+            <div className="ColorCardContent">
+              <p>#FF5733</p>
+              <button class="copyButton">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

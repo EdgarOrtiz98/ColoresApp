@@ -1,0 +1,53 @@
+.Colors {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.ColorCard {
+  align-items: center;
+  width: 150px;
+  background-color: transparent;
+  border-radius: 24px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #93c5fd;
+}
+
+.ColorCardPreview {
+  width: 145px;
+  height: 145px;
+  border-radius: 16px;
+}
+
+.ColorCardContent {
+  display: flex;
+  flex-direction: block;
+  justify-content: center;
+  align-items: center;
+}
+
+.ColorCardContent p {
+  border: 1px solid #93c5fd;
+  border-radius: 10px;
+  padding: 0.5rem 0.9rem;
+  margin:  0 0.5rem;
+}
+
+.copyButton {
+  background-color: #93c5fd;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.copyButton:hover {
+  background-color: #60a5fa;
+  transition: background-color 0.3s ease;
+}
