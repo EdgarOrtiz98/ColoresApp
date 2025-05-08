@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -42,6 +42,7 @@
 }
 
 .container {
+  width: 1200px;
   display: flex;
   top: 0;
   height: 100vh;
@@ -51,10 +52,11 @@
 }
 
 .InputSearch {
+  width: 1000px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 800px;
+  margin: 0 auto;
   border: 1px solid #93c5fd;
   border-radius: 1rem;
   padding: 0.5rem;
@@ -68,7 +70,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 1000px;
+  margin: 0 auto;
 }
 .InputTitle h2, p{
   margin: 0;
