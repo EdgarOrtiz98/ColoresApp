@@ -110,6 +110,7 @@
   width: 600px;
   color: gray;
   font-size: large;
+  /* text-transform: uppercase; */
   background-color: transparent;
 }
 

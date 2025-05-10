@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./styles/App.css";
 import CardsColor from "./components/CardColors.jsx";
+import { syncColorPicker } from "./scripts/Colores.js";
 
 function App() {
+  useEffect(() => {
+    syncColorPicker();
+  }, []);
   return (
     <>
       <div className="Container">
@@ -14,15 +18,15 @@ function App() {
           </div>
           <div className="InputSearch">
             <div className="InputGroup">
-              <input type="color" className="colorPicker" />
+              <input type="color" className="colorPicker"  id="colorPicker" />
               <input
                 type="text"
+                id="hexOutput"
                 className="textInput"
                 placeholder="Codigo Hexadecimal"
                 maxLength="7"
                 pattern="^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
                 title="El código hexadecimal debe comenzar con '#' y contener 3 o 6 dígitos hexadecimales."
-                required
               />
             </div>
             <button className="InputButton">Agregar Color</button>
