@@ -2,8 +2,18 @@ import { useState, useEffect } from "react";
 import "./styles/App.css";
 import CardsColor from "./components/CardColors.jsx";
 import { syncColorPicker } from "./scripts/Colores.js";
+import { generateColorShades } from "./scripts/ToneGenerator.js";
 
 function App() {
+  const [colorShades, setColorShades] = useState([]);
+  const [hexValue, setHexValue] = useState("");
+
+  function handleColorChange(e) {
+    const selectedColor = e.target.value;
+    setHexValue(selectedColor);
+    const shades = generateColorShades(selectedColor);
+    setColorShades(shades);
+  }
   useEffect(() => {
     syncColorPicker();
   }, []);
@@ -18,11 +28,12 @@ function App() {
           </div>
           <div className="InputSearch">
             <div className="InputGroup">
-              <input type="color" className="colorPicker"  id="colorPicker" />
+              <input type="color" className="colorPicker"  id="colorPicker" onChange={handleColorChange}/>
               <input
                 type="text"
                 id="hexOutput"
                 className="textInput"
+                // value={hexValue}
                 placeholder="Codigo Hexadecimal"
                 maxLength="7"
                 pattern="^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
@@ -37,7 +48,8 @@ function App() {
           <p className="exportPalette">Exportar</p>
         </div>
       </div>
-      <CardsColor />
+      {/* <CardsColor /> */}
+      <CardsColor colors={colorShades} />
     </>
   );
 }
