@@ -14,6 +14,7 @@ function App() {
     const shades = generateColorShades(selectedColor);
     setColorShades(shades);
   }
+
   useEffect(() => {
     syncColorPicker();
   }, []);

@@ -1,6 +1,8 @@
 import "../styles/ColorCard.css";
 
 function CardColors({ colors }) {
+  const scaleSteps = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+
   return (
     <div className="Colors">
       {colors.map((color, index) => (
@@ -10,11 +12,14 @@ function CardColors({ colors }) {
               className="ColorCardPreview"
               style={{ backgroundColor: color }}
             ></div>
-            <h3>{(index + 1) * 100}</h3>
+            <h3>{scaleSteps[index]}</h3>
           </div>
           <div className="ColorCardContent">
             <p>{color}</p>
-            <button className="copyButton">
+            <button
+              className="copyButton"
+              onClick={() => navigator.clipboard.writeText(color)}
+            >
               <i className="fas fa-copy"></i>
             </button>
           </div>
@@ -23,6 +28,5 @@ function CardColors({ colors }) {
     </div>
   );
 }
-
 
 export default CardColors;
