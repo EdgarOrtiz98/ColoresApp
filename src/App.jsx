@@ -3,23 +3,32 @@ import "./styles/App.css";
 import CardsColor from "./components/CardColors.jsx";
 import { syncColorPicker } from "./scripts/Colores.js";
 import { generateColorShades } from "./scripts/ToneGenerator.js";
+import {
+  getRandomHexColor,
+  handleColorChange
+} from "./scripts/App.js";
 
 function App() {
   const [colorShades, setColorShades] = useState([]);
   const [hexValue, setHexValue] = useState("");
+  const [showToast, setShowToast] = useState(false);
 
-  function handleColorChange(e) {
-    const selectedColor = e.target.value;
-    setHexValue(selectedColor);
-    const shades = generateColorShades(selectedColor);
-    setColorShades(shades);
+  function handleCopyColor(color) {
+    navigator.clipboard.writeText(color);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000);
   }
 
   useEffect(() => {
+    const randomColor = getRandomHexColor();
+    setHexValue(randomColor);
+    const shades = generateColorShades(randomColor);
+    setColorShades(shades);
     syncColorPicker();
   }, []);
   return (
     <>
+      {showToast && <div className="toast">¡Color copiado!</div>}
       <div className="Container">
         <h1>ColoresApp</h1>
         <div className="InputHexa">
@@ -29,12 +38,18 @@ function App() {
           </div>
           <div className="InputSearch">
             <div className="InputGroup">
-              <input type="color" className="colorPicker"  id="colorPicker" onChange={handleColorChange}/>
+              <input
+                type="color"
+                className="colorPicker"
+                id="colorPicker"
+                value={hexValue}
+                onChange={handleColorChange}
+              />
               <input
                 type="text"
                 id="hexOutput"
                 className="textInput"
-                // value={hexValue}
+                value={hexValue}
                 placeholder="Codigo Hexadecimal"
                 maxLength="7"
                 pattern="^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
@@ -49,8 +64,7 @@ function App() {
           <p className="exportPalette">Exportar</p>
         </div>
       </div>
-      {/* <CardsColor /> */}
-      <CardsColor colors={colorShades} />
+      <CardsColor colors={colorShades} onCopy={handleCopyColor} />
     </>
   );
 }
