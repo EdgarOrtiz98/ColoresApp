@@ -3,15 +3,19 @@ import "./styles/App.css";
 import CardsColor from "./components/CardColors.jsx";
 import { syncColorPicker } from "./scripts/Colores.js";
 import { generateColorShades } from "./scripts/ToneGenerator.js";
-import {
-  getRandomHexColor,
-  handleColorChange
-} from "./scripts/App.js";
+import { getRandomHexColor, handleColorChange } from "./scripts/App.js";
 
 function App() {
   const [colorShades, setColorShades] = useState([]);
   const [hexValue, setHexValue] = useState("");
   const [showToast, setShowToast] = useState(false);
+
+  function generateRandomColor() {
+    const randomColor = getRandomHexColor();
+    setHexValue(randomColor);
+    const shades = generateColorShades(randomColor);
+    setColorShades(shades);
+  }
 
   function handleCopyColor(color) {
     navigator.clipboard.writeText(color);
@@ -56,7 +60,9 @@ function App() {
                 title="El código hexadecimal debe comenzar con '#' y contener 3 o 6 dígitos hexadecimales."
               />
             </div>
-            <button className="InputButton">Agregar Color</button>
+            <button className="InputButton" onClick={generateRandomColor}>
+              Generar Color
+            </button>
           </div>
         </div>
         <div className="InputTitle">
